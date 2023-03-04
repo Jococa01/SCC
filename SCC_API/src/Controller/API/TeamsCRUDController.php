@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\API;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/players', name: 'app_players_')]
-class PlayersCRUDController extends AbstractController
+#[Route('/teams', name: 'app')]
+class TeamsCRUDController extends AbstractController
 {
-    #[Route('', name: 'list', methods:['GET'])]
+    #[Route('', name: '_teams')]
     public function index(): JsonResponse
     {
         return $this->json([
             'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/PlayersCRUDController.php',
+            'path' => 'src/Controller/TeamsCRUDController.php',
         ]);
     }
 }

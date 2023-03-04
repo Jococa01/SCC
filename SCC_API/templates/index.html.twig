@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+	<div class="gaming-library">
+		<div class="col-lg-12">
+			<div class="heading-section">
+				<h4>Ranking de Equipos</h4>
+			</div>
+			{% for team in data %}
+				<div class="item">
+					<ul>
+						<li>
+							<h4>#1</h4>
+						</li>
+						<li><img src="./assets/images/teams/cierzo.png" alt="" style="width:50px;"></li>
+						<li>
+							<h4>{{team.getName()}}</h4>
+						</li>
+						<li>
+							{% for player in team.getPlayers() %}
+							<h4>{{player.getNick()}}</h4>
+							{% endfor %}
+						</li>
+					</ul>
+				</div>
+			{% endfor %}
+		</div>
+	{% endblock %}
