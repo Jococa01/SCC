@@ -67,6 +67,13 @@ h2 {
     color: #EEEEEE;
 }
 
+h3{
+    font-family: covesBold;
+    font-weight: 700;
+    font-size: 24px;
+    color: #EEEEEE;
+}
+
 .desc {
     font-family: covesBold;
     font-weight: 900;
@@ -76,6 +83,7 @@ h2 {
 }
 .playerCont,
 .menu {
+    color: #EEEEEE;
     margin: 5em;
     /* border: #EEEEEE .5em solid; */
 }
