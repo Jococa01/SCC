@@ -1,0 +1,135 @@
+/* Font imports */
+@font-face {
+    font-family: covesLight;
+    src: url(./fonts/Coves\ Light.otf);
+}
+
+@font-face {
+    font-family: covesBold;
+    src: url(./fonts/Coves\ Bold.otf);
+}
+
+@font-face {
+    font-family: cornerstone;
+    src: url(./fonts/Cornerstone.ttf);
+}
+
+@font-face {
+    font-family: genuine;
+    src: url(./fonts/GENUINE.ttf);
+}
+
+/* End of imports */
+/* Paleta de color */
+span.paleta {
+    color: #222831;
+    color: #393E46;
+    color: #FFD369;
+    color: #EEEEEE;
+}
+
+/*  */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #222831;
+}
+
+.navbar {
+    padding-left: 1em;
+}
+
+.navbar .nav-link {
+    color: #EEEEEE;
+    font-family: covesBold;
+    font-size: 24px;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+    color: #FFD369;
+}
+
+h1 {
+    font-family: genuine;
+    font-weight: 500;
+    font-size: 80px;
+    color: #FFD369;
+}
+
+h2 {
+    font-family: covesBold;
+    font-weight: 900;
+    font-size: 60px;
+    color: #EEEEEE;
+}
+
+.desc {
+    font-family: covesBold;
+    font-weight: 900;
+    font-size: 24px;
+    color: #EEEEEE;
+    list-style-position: inside;
+}
+.playerCont,
+.menu {
+    margin: 5em;
+    /* border: #EEEEEE .5em solid; */
+}
+
+.pastTeams {
+    color: #EEEEEE;
+    background-color: #393E46;
+}
+
+.pastTeams .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pastTeams .row *{
+    padding: 0;
+    margin: 0;
+}
+.pastTeams .row ul li{
+    padding-left: 1em;
+}
+
+.pastTeams li,
+.pastTeams h2 {
+    display: inline-block;
+}
+
+.playerPhoto {
+    display: flex;
+    justify-content: center;
+}
+
+.playerPhoto img {
+    align-self: flex-end;
+}
+
+.playerInfo .row {
+    margin-bottom: 3em;
+}
+
+.circle {
+    width: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle::before {
+    border-radius: 50%;
+    width: 100%;
+    padding-bottom: 100%;
+    background: #FFD369;
+    content: "";
+    position: absolute;
+    z-index: -1;
+}
