@@ -48,9 +48,19 @@ body {
     font-size: 24px;
 }
 
-.navbar .nav-link.active,
-.navbar .nav-link:hover {
+a{
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+.navbar .nav-link:hover,
+a:hover {
     color: #FFD369;
+}
+
+.navbar .nav-link.active{
+    color: #FFD369;
+    text-decoration:underline;
 }
 
 h1 {
