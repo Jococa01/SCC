@@ -1,1 +1,222 @@
-/* You can add global styles to this file, and also import other style files */
+/* Font imports */
+@font-face {
+    font-family: covesLight;
+    src: url(assets/fonts/CovesLight.otf);
+}
+
+@font-face {
+    font-family: covesBold;
+    src: url(assets/fonts/CovesBold.otf);
+}
+
+@font-face {
+    font-family: cornerstone;
+    src: url(assets/fonts/Cornerstone.ttf);
+}
+
+@font-face {
+    font-family: genuine;
+    src: url(assets/fonts/GENUINE.ttf);
+}
+
+/* End of imports */
+/* Paleta de color */
+span.paleta {
+    color: #222831;
+    color: #393E46;
+    color: #FFD369;
+    color: #EEEEEE;
+}
+
+/*  */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #222831;
+}
+
+.navbar {
+    padding-left: 1em;
+}
+
+.navbar .nav-link {
+    color: #EEEEEE;
+    font-family: covesBold;
+    font-size: 24px;
+}
+
+a{
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+.navbar .nav-link:hover,
+a:hover {
+    color: #FFD369;
+}
+
+.navbar .nav-link.active{
+    color: #FFD369;
+    text-decoration:underline;
+}
+
+h1 {
+    font-family: genuine;
+    font-weight: 500;
+    font-size: 80px;
+    color: #FFD369;
+}
+
+h2 {
+    font-family: covesBold;
+    font-weight: 900;
+    font-size: 60px;
+    color: #EEEEEE;
+}
+
+h3{
+    font-family: covesBold;
+    font-weight: 700;
+    font-size: 24px;
+    color: #EEEEEE;
+}
+h4{
+    font-family: genuine;
+    font-weight: 500;
+    font-size: 60px;
+    color: #EEEEEE;
+}
+
+.desc {
+    font-family: covesBold;
+    font-weight: 900;
+    font-size: 24px;
+    color: #EEEEEE;
+    list-style-position: inside;
+}
+.playerCont,
+.menu {
+    color: #EEEEEE;
+    margin: 5em;
+    /* border: #EEEEEE .5em solid; */
+}
+
+.pastTeams {
+    color: #EEEEEE;
+    background-color: #393E46;
+}
+
+.pastTeams .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pastTeams .row *{
+    padding: 0;
+    margin: 0;
+}
+.pastTeams .row ul li{
+    padding-left: 1em;
+}
+
+.pastTeams li,
+.pastTeams h2 {
+    display: inline-block;
+}
+
+.playerPhoto {
+    display: flex;
+    justify-content: center;
+}
+
+.playerPhoto img {
+    align-self: flex-end;
+}
+
+.playerInfo .row {
+    margin-bottom: 3em;
+}
+
+.circle {
+    width: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle::before {
+    border-radius: 50%;
+    width: 100%;
+    padding-bottom: 100%;
+    background: #FFD369;
+    content: "";
+    position: absolute;
+    z-index: -1;
+}
+
+.TableCont{
+    width: 100%;
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    /* background-color: red; */
+    padding-top: 5%;
+}
+
+.teamTable{
+    width: 80%;
+}
+
+.teamTable th div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+
+.teamTable th div *{
+    padding: 0;
+    margin: 0;
+    padding-right: 16px;
+}
+
+.teamTable tbody td{
+    width: 20%;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.teamTable tbody td img{
+    width: 100%;
+    background-color: #FFD369;
+    border: #EEEEEE 3px solid;
+}
+
+.AllPlayers td{
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.AllPlayers td *{
+    margin-bottom: 0;
+}
+
+.PlayerDesc{
+    background-color: #393E46;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rankingTable tbody tr:hover{
+    background-color: #393E46;
+    cursor: pointer;
+}

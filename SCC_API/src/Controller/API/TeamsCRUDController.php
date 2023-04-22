@@ -2,19 +2,29 @@
 
 namespace App\Controller\API;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\Team;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/teams', name: 'app')]
+#[Route('/teams', name: 'api_teams_')]
 class TeamsCRUDController extends AbstractController
 {
-    #[Route('', name: '_teams')]
-    public function index(): JsonResponse
+    #[Route('', name: 'list', methods:['GET'])]
+    public function list(EntityManagerInterface $entityManager): JsonResponse
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/TeamsCRUDController.php',
-        ]);
+        $results = $entityManager->getRepository(Team::class)->findBy([],['ranking'=>'ASC']);
+        $data = [];
+        foreach ($results as $team) {
+            $data[] = [
+                'RANKING'=>$team->getRanking(),
+                'NAME'=>$team->getName(),
+                'LOGO'=>$team->getLogo(),
+                'FLAG' => $team->getFlag(),
+                'ID'=>$team->getId(),
+            ];
+        }
+        return $this->json($data);
     }
 }

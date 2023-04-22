@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row" style="background-color: #FFD369; height: 500px;">
+
+    </div>
+</div>
+
+<table class="table table-responsive table-responsive-sm rankingTable" style="color: aliceblue; text-align: center;">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Logo</th>
+            <th>Team Name</th>
+            <th>Difference in Ranking</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let team of TeamsArray; index as i;">
+        <tr style="vertical-align: middle;" [routerLink]="['/team',team[4]]">
+            <td>#{{team[0]}}</td>
+            <td><img src="/assets/images/teams/{{team[2]}}.png"alt="" height="100px"></td>
+            <td>
+                <h3>{{team[1]}}</h3>
+                <!-- <div style="display: flex; justify-content: center;">
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                </div> -->
+            </td>
+            <td>-</td>
+        </tr>
+        <!-- <tr style="vertical-align: middle;" onclick="window.location='equipo.html'">
+            <td>#5</td>
+            <td><img src="https://img-cdn.hltv.org/teamlogo/zFLwAELOD15BjJSDMMNBWQ.png?ixlib=java-2.1.0&w=100&s=88aeba1564bc27de69fb2302e47e1a7c"
+                    alt=""></td>
+            <td>
+                <h3>G2</h3>
+                <div style="display: flex; justify-content: center;">
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                </div>
+            </td>
+            <td>⬆️1</td>
+        </tr>
+        <tr style="vertical-align: middle;" onclick="window.location='equipo.html'">
+            <td>#6</td>
+            <td><img src="https://img-cdn.hltv.org/teamlogo/zFLwAELOD15BjJSDMMNBWQ.png?ixlib=java-2.1.0&w=100&s=88aeba1564bc27de69fb2302e47e1a7c"
+                    alt=""></td>
+            <td>
+                <h3>G2</h3>
+                <div style="display: flex; justify-content: center;">
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                    <p style="padding-right: .5em; color: #EEEEEE; margin-bottom: 0;">NiKo</p>
+                </div>
+            </td>
+            <td>⬇️1</td>
+        </tr> -->
+    </tbody>
+</table>

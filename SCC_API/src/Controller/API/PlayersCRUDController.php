@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api/players', name: 'api_players_')]
+#[Route('/players', name: 'api_players_')]
 class PlayersCRUDController extends AbstractController
 {
     #[Route('', name: 'list', methods:['GET'])]
@@ -20,12 +20,22 @@ class PlayersCRUDController extends AbstractController
             $data[] = [
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
-                // 'NAME' => mb_convert_encoding($associated->getName(), 'ISO-8859-1'),
-                // 'MAIL' => $associated->getMail(),
-                // 'TELF' => $associated->getPhone(),
-                // 'LOC' => mb_convert_encoding($associated->getLoc(), 'ISO-8859-1'),
-                // 'PROV' => mb_convert_encoding($associated->getProv(), 'ISO-8859-1'),
-                // 'DATE' => $associated->getDate()->format('l d M Y')
+                'FLAG' => $player->getFlag(),
+            ];
+        }
+        return $this->json($data);
+    }
+
+    #[Route('/{team}', name: 'team_list', methods:['GET'])]
+    public function team_list(EntityManagerInterface $entityManager, string $team): JsonResponse
+    {
+        $results = $entityManager->getRepository(Player::class)->findBy(['team'=>$team]);
+        $data = [];
+        foreach ($results as $player) {
+            $data[] = [
+                'NICK'=>$player->getNick(),
+                'NAME'=>$player->getName(),
+                'FLAG' => $player->getFlag(),
             ];
         }
         return $this->json($data);
