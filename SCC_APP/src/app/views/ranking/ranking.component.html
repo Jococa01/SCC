@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody *ngFor="let team of TeamsArray; index as i;">
-        <tr style="vertical-align: middle;" [routerLink]="['/team',team[4]]">
+        <tr style="vertical-align: middle;" [routerLink]="['/team', team[4]]" [queryParams]="{id: team[4]}">
             <td>#{{team[0]}}</td>
             <td><img src="/assets/images/teams/{{team[2]}}.png"alt="" height="100px"></td>
             <td>
