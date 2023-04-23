@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Teams } from '../models/response';
+import { Teams, Team } from '../models/response';
 
 
 @Injectable({
@@ -15,5 +15,9 @@ export class DataService {
 
   getTeams():Observable<Teams>{
     return this.http.get<Teams>(this.urlTeams);
+  }
+
+  getTeamPlayers(id:string):Observable<Team>{
+    return this.http.get<Team>(this.urlTeams+"/"+id);
   }
 }

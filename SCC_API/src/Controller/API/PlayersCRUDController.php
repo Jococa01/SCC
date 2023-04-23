@@ -26,18 +26,18 @@ class PlayersCRUDController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/{team}', name: 'team_list', methods:['GET'])]
-    public function team_list(EntityManagerInterface $entityManager, string $team): JsonResponse
-    {
-        $results = $entityManager->getRepository(Player::class)->findBy(['team'=>$team]);
-        $data = [];
-        foreach ($results as $player) {
-            $data[] = [
-                'NICK'=>$player->getNick(),
-                'NAME'=>$player->getName(),
-                'FLAG' => $player->getFlag(),
-            ];
-        }
-        return $this->json($data);
-    }
+    // #[Route('/{team}', name: 'team_list', methods:['GET'])]
+    // public function team_list(EntityManagerInterface $entityManager, string $team): JsonResponse
+    // {
+    //     $results = $entityManager->getRepository(Player::class)->findBy(['team'=>$team]);
+    //     $data = [];
+    //     foreach ($results as $player) {
+    //         $data[] = [
+    //             'NICK'=>$player->getNick(),
+    //             'NAME'=>$player->getName(),
+    //             'FLAG' => $player->getFlag(),
+    //         ];
+    //     }
+    //     return $this->json($data);
+    // }
 }

@@ -4,17 +4,28 @@
             <tr>
                 <th colspan="5" style="text-align: center;">
                     <div>
-                        <img src="https://img-cdn.hltv.org/teamlogo/zFLwAELOD15BjJSDMMNBWQ.png?ixlib=java-2.1.0&w=100&s=88aeba1564bc27de69fb2302e47e1a7c"
-                            alt="" height="60px">
-                        <h4>G2 ESPORTS</h4>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/2560px-Flag_of_Bosnia_and_Herzegovina.svg.png"
-                            alt="" height="60px">
+                        <img src="https://img-cdn.hltv.org/teamlogo/zFLwAELOD15BjJSDMMNBWQ.png?ixlib=java-2.1.0&w=100&s=88aeba1564bc27de69fb2302e47e1a7c" alt="" height="60px">
+                        <h4>{{TeamName}}</h4>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/2560px-Flag_of_Bosnia_and_Herzegovina.svg.png" alt="" height="60px">
                     </div>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td *ngFor="let player of Players; index as i;">
+                    <img src="https://img-cdn.hltv.org/playerbodyshot/ryEzkk38b_L-5BdkIG23c3.png?ixlib=java-2.1.0&w=400&s=62e42f9862a878e552236e0df10e7249" alt="" />
+                </td>
+            </tr>
+            <tr class="AllPlayers">
+                <td *ngFor="let player of Players; index as i;">
+                    <div class="PlayerDesc">
+                        <h2><a href="player/{{player[0]}}">{{player[1]}}</a></h2>
+                        <h3>Rifler</h3>
+                    </div>
+                </td>
+            </tr>
+            <!-- <tr>
                 <td><img src="https://img-cdn.hltv.org/playerbodyshot/ryEzkk38b_L-5BdkIG23c3.png?ixlib=java-2.1.0&w=400&s=62e42f9862a878e552236e0df10e7249"
                         alt="" /></td>
                 <td><img src="https://img-cdn.hltv.org/playerbodyshot/ryEzkk38b_L-5BdkIG23c3.png?ixlib=java-2.1.0&w=400&s=62e42f9862a878e552236e0df10e7249"
@@ -57,7 +68,7 @@
                         <h3>Rifler</h3>
                     </div>
                 </td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 </div>
