@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/teams', name: 'api_teams_')]
+#[Route('/api/teams', name: 'api_teams_')]
 class TeamsCRUDController extends AbstractController
 {
     #[Route('', name: 'list', methods:['GET'])]
