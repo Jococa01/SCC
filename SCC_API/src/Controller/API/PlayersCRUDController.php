@@ -22,6 +22,7 @@ class PlayersCRUDController extends AbstractController
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
                 'FLAG' => $player->getFlag(),
+                'PHOTO' => $player->getPhoto()
             ];
         }
         return $this->json($data);

@@ -43,6 +43,7 @@ class TeamsCRUDController extends AbstractController
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
                 'FLAG' => $player->getFlag(),
+                'PHOTO' => $player->getPhoto()
             ];
         }
 

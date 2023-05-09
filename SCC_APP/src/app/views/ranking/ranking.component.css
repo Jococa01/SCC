@@ -31,12 +31,16 @@
     border-radius: .5em;
 }
 
-.podium-0{
-    color: gold;
+.podium-0 h1{
+    color: gold!important;
 }
-.podium-1{
-    color: silver;
+.podium-1 h1{
+    color: silver!important;
 }
-.podium-2{
-    color: burlywood;
+.podium-2 h1{
+    color: burlywood!important;
+}
+.ranking-row td{
+    vertical-align: middle; 
+    padding: 1em;
 }

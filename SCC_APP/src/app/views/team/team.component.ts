@@ -27,19 +27,20 @@ export class TeamComponent {
     console.log(response);
     this.TeamName = response[0].NAME;
     this.TeamLogo = response[0].LOGO;
+    this.TeamFlag = response[0].FLAG;
     console.log(this.TeamLogo);
     if(response[0].PLAYERS != "none"){
       for(let i = 0; i<response[0].PLAYERS.length; i++){
-        newArray[i] = [response[0].PLAYERS[i].ID,response[0].PLAYERS[i].NICK,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG];
+        newArray[i] = [response[0].PLAYERS[i].ID,response[0].PLAYERS[i].NICK,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO];
       }
       if(newArray.length<nPlayers){
         for(let i = newArray.length; i<nPlayers; i++){
-          newArray.push(["","?","",""]);
+          newArray.push(["","?","","","default"]);
         }
       }
     }else{
       for(let n = 0; n<nPlayers; n++){
-        newArray.push(["","?","",""]);
+        newArray.push(["","?","","","default"]);
       }
     }
 

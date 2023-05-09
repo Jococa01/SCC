@@ -3,9 +3,20 @@
         <div class="podium">
             <ng-container *ngFor="let team of TeamsArray; index as i;">
                 <ng-container *ngIf="i<3">
-                    <div class="podium-{{ i }}" [routerLink]="['/team', team[4]]">
-                        <h1>{{ team[1] }}</h1>
-                    </div>
+                    <ng-container *ngIf="team[4]!=undefined; else elserow">
+                        <div class="podium-{{ i }}" [routerLink]="['/team', team[4]]">
+                            <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
+                            <h1>{{ team[1] }}</h1>
+                            <h1>#{{ team[0] }}</h1>
+                        </div>
+                    </ng-container>
+                    <ng-template #elserow>
+                        <div class="podium-{{ i }}">
+                            <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
+                            <h1>{{ team[1] }}</h1>
+                            <h1>#{{ team[0] }}</h1>
+                        </div>
+                    </ng-template>
                 </ng-container>
             </ng-container>
         </div>
@@ -22,14 +33,26 @@
             </thead>
             <tbody *ngFor="let team of TeamsArray; index as i;">
                 <ng-container *ngIf="i>2">
-                    <tr style="vertical-align: middle;" [routerLink]="['/team', team[4]]">
-                        <td>#{{team[0]}}</td>
-                        <td><img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px"></td>
-                        <td>
-                            <h3>{{team[1]}}</h3>
-                        </td>
-                        <td>-</td>
-                    </tr>
+                    <ng-container *ngIf="team[4]!=undefined; else elserow">
+                        <tr class="ranking-row" [routerLink]="['/team', team[4]]">
+                            <td>#{{team[0]}}</td>
+                            <td><img src="/assets/images/teams/{{team[2]}}.png" alt="" height="50px"></td>
+                            <td>
+                                <h3>{{team[1]}}</h3>
+                            </td>
+                            <td>-</td>
+                        </tr>
+                    </ng-container>
+                    <ng-template #elserow>
+                        <tr class="ranking-row">
+                            <td>#{{team[0]}}</td>
+                            <td><img src="/assets/images/teams/{{team[2]}}.png" alt="" height="50px"></td>
+                            <td>
+                                <h3>{{team[1]}}</h3>
+                            </td>
+                            <td>-</td>
+                        </tr>
+                    </ng-template>
                 </ng-container>
             </tbody>
         </table>
