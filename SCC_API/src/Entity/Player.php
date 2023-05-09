@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PlayerRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
@@ -22,8 +23,8 @@ class Player
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $flag = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $age = null;
+    // #[ORM\Column(nullable: true)]
+    // private ?int $age = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo = null;
@@ -31,9 +32,24 @@ class Player
     #[ORM\ManyToOne(inversedBy: 'players')]
     private ?Team $team = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $age = null;
+
+    public function __toString()
+    {
+        return $this->getNick();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNick(): ?string
@@ -72,17 +88,17 @@ class Player
         return $this;
     }
 
-    public function getAge(): ?int
-    {
-        return $this->age;
-    }
+    // public function getAge(): ?int
+    // {
+    //     return $this->age;
+    // }
 
-    public function setAge(?int $age): self
-    {
-        $this->age = $age;
+    // public function setAge(?int $age): self
+    // {
+    //     $this->age = $age;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPhoto(): ?string
     {
@@ -104,6 +120,18 @@ class Player
     public function setTeam(?Team $team): self
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getAge(): ?\DateTimeInterface
+    {
+        return $this->age;
+    }
+
+    public function setAge(?\DateTimeInterface $age): self
+    {
+        $this->age = $age;
 
         return $this;
     }

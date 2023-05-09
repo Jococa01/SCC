@@ -1,35 +1,52 @@
 {% extends "layout.html.twig" %}
 {% block content %}
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Flag</th>
-			<th>Ranking</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for team in data %}
-			<tr style="vertical-align: middle;">
-				<td>
-					{{team.getId()}}
-				</td>
-				<td onclick="window.location='/teams/{{ team.getId() }}'">
-					{{team.getName()}}
-				</td>
-				<td>
-					{{team.getFlag()}}
-				</td>
-				<td>
-					{{team.getRanking()}}
-				</td>
-				<td>
-					<img src="/assets/images/icons/edit.png" height="30px" class="edit" style="filter: invert(56%) sepia(21%) saturate(669%) hue-rotate(62deg) brightness(94%) contrast(96%);">
-					<img src="/assets/images/icons/delete.png" height="30px" class="delete" style="filter: invert(70%) sepia(80%) saturate(5384%) hue-rotate(335deg) brightness(91%) contrast(88%);">
-				</td>
-			</tr>
-		{% endfor %}
-	</tbody>
-</div>
-{% endblock %}
+	<div class="row" style="display: flex; justify-content: center; align-items: center;">
+		<div class="management" style="width: 90%; padding: 0 0 1em 0;">
+			<div class="tables" style="display: flex; justify-content: start; align-items: center;">
+				<h3 onclick="window.location='/teams'">Teams</h3>
+				<h3 onclick="window.location='/players'">Players</h3>
+			</div>
+			<div class="search">
+				<div style="width: 200px; height: 50px; background-color: #EEE; border: #393E46 3px solid; border-radius: 1em; display: flex; justify-content: center; align-items: center;">
+					<h3 style="padding: 0; margin: 0; color: #393E46;">Search...</h3>
+				</div>
+			</div>
+			<div>
+				<img src="/assets/images/icons/new.png" height="30px" class="edit" style="filter: invert(84%) sepia(33%) saturate(771%) hue-rotate(338deg) brightness(102%) contrast(101%);" onclick="window.location='/newplayer'">
+			</div>
+		</div>
+		<table class="dataTable" style="color: aliceblue; text-align: center;">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Flag</th>
+					<th>Ranking</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for team in data %}
+					<tr style="vertical-align: middle;">
+						<td>
+							{{team.getId()}}
+						</td>
+						<td onclick="window.location='/teams/{{ team.getId() }}'">
+							{{team.getName()}}
+						</td>
+						<td>
+							{{team.getFlag()}}
+						</td>
+						<td>
+							{{team.getRanking()}}
+						</td>
+						<td>
+							<img src="/assets/images/icons/edit.png" height="30px" class="edit" style="filter: invert(56%) sepia(21%) saturate(669%) hue-rotate(62deg) brightness(94%) contrast(96%);">
+							<img src="/assets/images/icons/delete.png" height="30px" class="delete" style="filter: invert(70%) sepia(80%) saturate(5384%) hue-rotate(335deg) brightness(91%) contrast(88%);">
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</div>
+	</table>
+</div></div>{% endblock %}

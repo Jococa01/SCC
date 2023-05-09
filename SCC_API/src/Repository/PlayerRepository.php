@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use DateTime;
 use App\Entity\Player;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Team;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Player>
@@ -37,6 +39,23 @@ class PlayerRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function insert(array $data): void
+    {
+        $AllPlayers = $this->getEntityManager()->getRepository(Player::class)->findAll();
+        $Nextnum = count($AllPlayers);
+        $TeamOBJ = $this->getEntityManager()->getRepository(Team::class)->findBy(array('id'=>$data['team']));
+        $player = new Player;
+        $player
+            ->setId($Nextnum)
+            ->setTeam($TeamOBJ[0])
+            ->setNick($data['nick'])
+            ->setName($data['name'])
+            ->setFlag($data['flag'])
+            ->setPhoto($data['foto'])
+            ->setAge(new DateTime());
+        $this->save($player, true);
     }
 
 //    /**
