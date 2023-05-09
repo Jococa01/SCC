@@ -8,6 +8,7 @@ import { RankingComponent } from './views/ranking/ranking.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayerComponent } from './views/player/player.component';
 import { TeamComponent } from './views/team/team.component';
+import { FaComponent } from './views/fa/fa.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TeamComponent } from './views/team/team.component';
     NavbarComponent,
     RankingComponent,
     PlayerComponent,
-    TeamComponent
+    TeamComponent,
+    FaComponent
   ],
   imports: [
     BrowserModule,

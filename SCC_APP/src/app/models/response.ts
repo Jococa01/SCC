@@ -20,4 +20,5 @@ export interface Player {
     NICK: string;
     NAME: string;
     FLAG: string;
+    PHOTO: string;
 }

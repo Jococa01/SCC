@@ -1,0 +1,16 @@
+.table-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.faTable{
+    color: #EEE;
+    text-align: center;
+    width: 90%;
+}
+.faTable tbody tr:nth-child(odd){
+    background-color: #393E46;
+}
+.faTable tbody{
+    border: #EEE .3em solid;
+}

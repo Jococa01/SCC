@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row table-row">
+        <table class="faTable">
+            <thead>
+                <tr>
+                    <th>Nick</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let player of PlayerArray; index as i;">
+                    <tr class="ranking-row" [routerLink]="['/player', player[4]]">
+                        <td>{{player[0]}}</td>
+                        <td><img src="/assets/images/players/{{player[1]}}.png" alt="" height="100px"></td>
+                        <td>{{player[2]}}</td>
+                        <td><img src="/assets/images/flags/{{player[3]}}.png" alt="" height="50px"></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

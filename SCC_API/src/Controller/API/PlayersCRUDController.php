@@ -9,16 +9,51 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/api/players', name: 'api_players_')]
+#[Route('/api/player', name: 'api_players_')]
 class PlayersCRUDController extends AbstractController
 {
-    #[Route('', name: 'list', methods:['GET'])]
+    #[Route('s', name: 'list', methods:['GET'])]
     public function list(EntityManagerInterface $entityManager): JsonResponse
     {
         $results = $entityManager->getRepository(Player::class)->findAll();
         $data = [];
         foreach ($results as $player) {
             $data[] = [
+                'ID'=>$player->getId(),
+                'NICK'=>$player->getNick(),
+                'NAME'=>$player->getName(),
+                'FLAG' => $player->getFlag(),
+                'PHOTO' => $player->getPhoto()
+            ];
+        }
+        return $this->json($data);
+    }
+
+    #[Route('/{id}', name: 'single', methods:['GET'])]
+    public function single(EntityManagerInterface $entityManager, string $id): JsonResponse
+    {
+        $results = $entityManager->getRepository(Player::class)->findBy(['id'=>$id]);
+        $data = [];
+        foreach ($results as $player) {
+            $data[] = [
+                'ID'=>$player->getId(),
+                'NICK'=>$player->getNick(),
+                'NAME'=>$player->getName(),
+                'FLAG' => $player->getFlag(),
+                'PHOTO' => $player->getPhoto()
+            ];
+        }
+        return $this->json($data);
+    }
+
+    #[Route('s/fa', name: 'fa', methods:['GET'])]
+    public function fa(EntityManagerInterface $entityManager): JsonResponse
+    {
+        $results = $entityManager->getRepository(Player::class)->findBy(['team'=>null]);
+        $data = [];
+        foreach ($results as $player) {
+            $data[] = [
+                'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
                 'FLAG' => $player->getFlag(),

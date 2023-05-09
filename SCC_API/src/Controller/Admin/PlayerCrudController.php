@@ -27,4 +27,13 @@ class PlayerCrudController extends AbstractCrudController
         yield Field::new('photo');
         yield Field::new('age');
     }
+
+    public function createEntity(string $entityFqcn)
+    {
+        // $num = count($this->repository->findAll())+1;
+        $product = new Player();
+        $product->setTeam(null);
+
+        return $product;
+    }
 }
