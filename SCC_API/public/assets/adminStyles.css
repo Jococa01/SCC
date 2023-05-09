@@ -1,0 +1,81 @@
+/* Font imports */
+@font-face {
+    font-family: covesLight;
+    src: url(./fonts/Coves\ Light.otf);
+}
+
+@font-face {
+    font-family: covesBold;
+    src: url(./fonts/Coves\ Bold.otf);
+}
+
+@font-face {
+    font-family: cornerstone;
+    src: url(./fonts/Cornerstone.ttf);
+}
+
+@font-face {
+    font-family: genuine;
+    src: url(./fonts/GENUINE.ttf);
+}
+
+/* End of imports */
+/* Paleta de color */
+span.paleta {
+    color: #222831;
+    color: #393E46;
+    color: #FFD369;
+    color: #EEEEEE;
+}
+
+/*  */
+/* * {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #222831;
+}
+
+a{
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+.navbar .nav-link:hover,
+a:hover {
+    color: #FFD369;
+}
+
+.navbar .nav-link.active{
+    color: #FFD369;
+    text-decoration:underline;
+}
+
+h1 {
+    font-family: genuine;
+    font-weight: 500;
+    font-size: 80px;
+    color: #FFD369;
+}
+
+h2 {
+    font-family: covesBold;
+    font-weight: 900;
+    font-size: 60px;
+    color: #EEEEEE;
+}
+
+h3, .form-label{
+    font-family: covesBold;
+    font-weight: 700;
+    font-size: 24px;
+    color: #EEEEEE;
+}
+h4{
+    font-family: genuine;
+    font-weight: 500;
+    font-size: 60px;
+    color: #EEEEEE;
+} */

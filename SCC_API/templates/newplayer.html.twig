@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+	<div class="row" style="display: flex; justify-content: center; align-items: center;">
+		<div style="width: 80%;">
+			<h2>Nuevo Jugador</h2>
+			<form>
+				<div class="mb-3">
+					<label for="nick" class="form-label">Nick</label>
+					<input type="text" class="form-control" id="nick">
+				</div>
+				<div class="mb-3">
+					<label for="name" class="form-label">Nombre</label>
+					<input type="text" class="form-control" id="name">
+				</div>
+				<div class="mb-3">
+					<label for="foto" class="form-label">Foto</label>
+					<input type="text" class="form-control" id="foto">
+				</div>
+				<div class="mb-3">
+					<label for="team" class="form-label">Equipo</label>
+						<select id="team" class="form-select" aria-label="">
+								{% for team in data %}
+									<option value="{{team.getId()}}">{{team.getName()}}</option>
+								{% endfor %}
+						</select>
+				</div>
+				<div class="mb-3 ">
+					<label for="BD" class="form-label ">Fecha de Nacimiento</label>
+					<input type="date" class="form-control " id="BD" />
+				</div>
+			</form>
+			<button type="submit" onclick="UserAction()">Search</button>
+		</div>
+	</div>
+{% endblock %}
