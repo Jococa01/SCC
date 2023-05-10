@@ -1,7 +1,12 @@
 .table-row{
+    /* padding-top: 1em; */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 2%;
+}
+.table-row:first-child{
+    padding-top: 5%;
 }
 .Teamtable{
     color: #EEE;
@@ -10,6 +15,10 @@
 }
 .Teamtable tbody:nth-child(odd){
     background-color: #393E46;
+}
+.Teamtable th{
+    border-bottom: #EEE 3px solid;
+    padding-bottom: 1em;
 }
 
 .podium{
@@ -22,13 +31,33 @@
     height: 500px;
 }
 
-.podium div{
+/* .podium div{
     background-color: #393E46;
     text-align: center;
     width: 33%;
     height: 100%;
     margin: .5em;
     border-radius: .5em;
+} */
+
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #393E46;
+    text-align: center;
+    width: 33%;
+    height: 100%;
+    margin: .5em;
+    border-radius: .5em;
+}
+
+.top .items{
+
+}
+
+.podium h1{
+    font-size: 60px;
 }
 
 .podium-0 h1{

@@ -4,17 +4,21 @@
             <ng-container *ngFor="let team of TeamsArray; index as i;">
                 <ng-container *ngIf="i<3">
                     <ng-container *ngIf="team[4]!=undefined; else elserow">
-                        <div class="podium-{{ i }}" [routerLink]="['/team', team[4]]">
-                            <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
-                            <h1>{{ team[1] }}</h1>
-                            <h1>#{{ team[0] }}</h1>
+                        <div class="podium-{{ i }} top" [routerLink]="['/team', team[4]]">
+                            <div class="items">
+                                <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
+                                <h1>{{ team[1] }}</h1>
+                                <h1>#{{ team[0] }}</h1>
+                            </div>
                         </div>
                     </ng-container>
                     <ng-template #elserow>
-                        <div class="podium-{{ i }}">
-                            <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
-                            <h1>{{ team[1] }}</h1>
-                            <h1>#{{ team[0] }}</h1>
+                        <div class="podium-{{ i }} top">
+                            <div class="items">
+                                <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
+                                <h1>{{ team[1] }}</h1>
+                                <h1>#{{ team[0] }}</h1>
+                            </div>
                         </div>
                     </ng-template>
                 </ng-container>

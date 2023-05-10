@@ -33,6 +33,8 @@ class PlayerCrudController extends AbstractCrudController
         // $num = count($this->repository->findAll())+1;
         $product = new Player();
         $product->setTeam(null);
+        $product->setFlag("international");
+        $product->setPhoto("default");
 
         return $product;
     }

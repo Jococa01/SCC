@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import {Title} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'app-fa',
@@ -9,7 +11,9 @@ import { DataService } from 'src/app/services/data.service';
 export class FaComponent {
   public PlayerArray: Array<string>[]=[];
 
-  constructor(public service: DataService) {}
+  constructor(public service: DataService, private titleService:Title) {
+    this.titleService.setTitle("Free Agents | Spanish CSGO Community ");
+  }
 
   public getPlayers(): void {
     this.service.getFaPlayers().subscribe((response) => {this.responseToArray(response)});
@@ -31,16 +35,15 @@ export class FaComponent {
     //   }
     // }
 
-    // for(let i = 0; i<newArray.length; i++){
-    //   if(newArray[i][0] == null ){
-    //     newArray.splice(i,1);
-    //     newArray.push([newArray.length+1, "Team Name", "def_logo", "international"]);
-    //   }
+    // if(newArray.length == 0 ){
+    //   newArray.push(["Player Name","default", "", "international", "international"]);
     // }
 
     // console.log(newArray);
     
     this.PlayerArray = newArray;
+    console.log(this.PlayerArray);
+    
   }
 
   ngOnInit(){

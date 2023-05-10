@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-ranking',
@@ -10,7 +11,9 @@ export class RankingComponent {
 
   public TeamsArray: Array<string>[]=[];
 
-  constructor(public service: DataService) {}
+  constructor(public service: DataService, private titleService:Title) {
+    this.titleService.setTitle("Ranking Amateur | Spanish CSGO Community ");
+  }
 
   public getTeams(): void {
     this.service.getTeams().subscribe((response) => {this.responseToArray(response)});

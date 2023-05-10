@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 5%;
 }
 .faTable{
     color: #EEE;
@@ -11,6 +12,14 @@
 .faTable tbody tr:nth-child(odd){
     background-color: #393E46;
 }
-.faTable tbody{
-    border: #EEE .3em solid;
+.faTable th{
+    border-bottom: #EEE .3em solid;
+    padding-bottom: 1em;
+}
+.mid-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
 }

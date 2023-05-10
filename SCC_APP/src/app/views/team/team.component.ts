@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-team',
@@ -15,7 +16,7 @@ export class TeamComponent {
   public TeamLogo: string = "";
   public TeamFlag: string = "";
 
-  constructor(public service: DataService,private activatedRoute: ActivatedRoute) {}
+  constructor(public service: DataService,private activatedRoute: ActivatedRoute, private titleService:Title) {}
 
   public getPlayers(id:string): void {
     this.service.getTeamPlayers(id).subscribe((response) => {this.responseToArray(response)});
@@ -26,6 +27,7 @@ export class TeamComponent {
     let newArray = [];
     console.log(response);
     this.TeamName = response[0].NAME;
+    this.titleService.setTitle(this.TeamName+" team page | Spanish CSGO Community");
     this.TeamLogo = response[0].LOGO;
     this.TeamFlag = response[0].FLAG;
     console.log(this.TeamLogo);
