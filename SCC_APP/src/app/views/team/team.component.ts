@@ -39,6 +39,12 @@ export class TeamComponent {
         for(let i = newArray.length; i<nPlayers; i++){
           newArray.push(["","?","","","default"]);
         }
+      }else if(newArray.length>nPlayers){
+        for(let i = 0; i<newArray.length; i++){
+          if(i>3){
+            newArray.pop();
+          }
+        }
       }
     }else{
       for(let n = 0; n<nPlayers; n++){
