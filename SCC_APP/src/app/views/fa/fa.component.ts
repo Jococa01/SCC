@@ -10,6 +10,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class FaComponent {
   public PlayerArray: Array<string>[]=[];
+  // public isLoaded = false;
 
   constructor(public service: DataService, private titleService:Title) {
     this.titleService.setTitle("Free Agents | Spanish CSGO Community ");
@@ -22,6 +23,9 @@ export class FaComponent {
   public responseToArray(response:any){
     let nullcount = 0;
     let newArray = [];
+    // this.isLoaded=true;
+    let loader = document.getElementsByClassName('loader')[0];
+    loader.classList.add('hidden');
     for(let i = 0; i<response.length; i++){
       newArray[i] = [response[i].NICK, response[i].PHOTO, response[i].NAME, response[i].FLAG, response[i].ID];
       // if(newArray[i][0] == null ){

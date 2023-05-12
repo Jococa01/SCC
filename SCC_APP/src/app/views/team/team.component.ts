@@ -34,6 +34,12 @@ export class TeamComponent {
     if(response[0].PLAYERS != "none"){
       for(let i = 0; i<response[0].PLAYERS.length; i++){
         newArray[i] = [response[0].PLAYERS[i].ID,response[0].PLAYERS[i].NICK,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO];
+        if(response[0].PLAYERS[i].NICK.length>12){
+          let name = response[0].PLAYERS[i].NICK;
+          let shortname = name.slice(0,9);
+          shortname = shortname+"...";
+          newArray[i] = [response[0].PLAYERS[i].ID,shortname,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO];
+        }
       }
       if(newArray.length<nPlayers){
         for(let i = newArray.length; i<nPlayers; i++){

@@ -1,5 +1,5 @@
 .teamTable{
-    width: 80%;
+    width: 1200px;
 }
 
 .teamTable th div{
@@ -29,10 +29,11 @@
 }
 
 .AllPlayers td{
-    margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    max-width: 20px;
 }
 
 .AllPlayers td *{
@@ -60,9 +61,21 @@
 .PlayerDesc h2{
     font-family: genuine;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 32px;
     color: #EEE;
 }
 .PlayerDesc h3, .PlayerDesc h2{
     padding-top: 10px;
+}
+
+/* .PlayerDesc img{
+    height: 50%;
+} */
+
+.playerInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* height: 50%; */
 }

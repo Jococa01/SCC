@@ -22,12 +22,16 @@
                     <div class="PlayerDesc">
                         <img src="/assets/images/players/{{player[4]}}.png" alt="" />
                         <ng-container *ngIf="player[1]!='?';else elseblock">
-                            <h2><a href="player/{{player[0]}}">{{player[1]}}</a></h2>
-                            <h3>Rifler</h3>
+                            <div class="playerInfo">
+                                <h2><a href="player/{{player[0]}}">{{player[1]}}</a></h2>
+                                <h3>Rifler</h3>
+                            </div>
                         </ng-container>
                         <ng-template #elseblock>
-                            <h2><a>{{player[1]}}</a></h2>
-                            <h3>&nbsp;</h3>
+                            <div class="playerInfo">
+                                <h2><a>{{player[1]}}</a></h2>
+                                <h3>&nbsp;</h3>
+                            </div>
                         </ng-template>
                     </div>
                 </td>
