@@ -1,1 +1,37 @@
-<p>player works!</p>
+<div class="container-fluid mainCont" style="padding-top: 5em;">
+    <div class="playerPage">
+        <ng-container *ngIf='Team!=undefined; else elseblock'>
+            <div class="row menu">
+                <a href="/team/{{ TeamID }}"><h3><-- All {{ Team }} Players</h3></a>
+            </div>
+        </ng-container>
+        <ng-template #elseblock>
+            <div class="row menu">
+                <a href="/free-agents"><h3><-- All Free Agents</h3></a>
+            </div>
+        </ng-template>
+        <div class="playerCont">
+            <div class="container playerInfo">
+                <div class="row">
+                    <h1>{{ FullName }}</h1>
+                </div>
+                <div class="row desc">
+                    <h2>Rifler / {{ PlayerFlag }}
+                        <img src="/assets/images/flags/{{ PlayerFlag }}.png"alt="" height="50px">
+                    </h2>
+                    <ul>
+                        <li>AGE: {{ Age }}</li>
+                        <ng-container *ngIf='Team!=undefined;'>
+                            <li>TEAM: {{ Team }}</li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+            <div class="playerPhoto">
+                <div class="circle">
+                    <img src="/assets/images/players/{{ PlayerPhoto }}.png" alt="" height="375px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

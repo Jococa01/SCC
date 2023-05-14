@@ -26,4 +26,12 @@ export class DataService {
     return this.http.get<Player>(this.urlPlayers+"s/fa");
   }
 
+  getPlayer(id:string):Observable<Player>{
+    return this.http.get<Player>(this.urlPlayers+"/"+id);
+  }
+
+  queryPlayers(nick:string):Observable<Player>{
+    return this.http.get<Player>(this.urlPlayers+"/search/"+nick);
+  }
+
 }

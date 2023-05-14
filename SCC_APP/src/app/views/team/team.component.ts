@@ -27,7 +27,7 @@ export class TeamComponent {
     let newArray = [];
     console.log(response);
     this.TeamName = response[0].NAME;
-    this.titleService.setTitle(this.TeamName+" team page | Spanish CSGO Community");
+    this.titleService.setTitle(this.TeamName+"'s team page | Spanish CSGO Community");
     this.TeamLogo = response[0].LOGO;
     this.TeamFlag = response[0].FLAG;
     console.log(this.TeamLogo);

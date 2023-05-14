@@ -15,10 +15,16 @@ export interface Team {
     PLAYERS: Player[];
 }
 
+export interface BasicTeam {
+    NAME: string;
+    LOGO: string;
+}
+
 export interface Player {
     ID: number;
     NICK: string;
     NAME: string;
     FLAG: string;
     PHOTO: string;
+    TEAM:  BasicTeam;
 }

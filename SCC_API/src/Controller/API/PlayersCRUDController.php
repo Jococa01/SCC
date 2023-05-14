@@ -35,12 +35,19 @@ class PlayersCRUDController extends AbstractController
         $results = $entityManager->getRepository(Player::class)->findBy(['id'=>$id]);
         $data = [];
         foreach ($results as $player) {
+            $age = $player->getAge() == null ? "":  $player->getAge();
             $data[] = [
                 'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
                 'FLAG' => $player->getFlag(),
-                'PHOTO' => $player->getPhoto()
+                'PHOTO' => $player->getPhoto(),
+                'AGE'=> $age,
+                'TEAM' => $player->getTeam() == null ? "No team": [
+                    'ID' => $player->getTeam()->getId(),
+                    'NAME' => $player->getTeam()->getName(),
+                    'LOGO' => $player->getTeam()->getLogo()
+                ]
             ];
         }
         return $this->json($data);
@@ -58,6 +65,37 @@ class PlayersCRUDController extends AbstractController
                 'NAME'=>$player->getName(),
                 'FLAG' => $player->getFlag(),
                 'PHOTO' => $player->getPhoto()
+            ];
+        }
+        return $this->json($data);
+    }
+
+    #[Route('/search/{nick}', name: 'query', methods:['GET'])]
+    public function query(EntityManagerInterface $entityManager, string $nick): JsonResponse
+    {
+        $QB = $entityManager->getRepository(Player::class)->createQueryBuilder('o')
+        ->where('o.nick LIKE :nick OR o.name LIKE :nick')
+        ->setParameter('nick', '%'.$nick.'%');
+
+        $query = $QB->getQuery();
+
+        $results = $query->execute();
+
+        $data = [];
+        foreach ($results as $player) {
+            $age = $player->getAge() == null ? "":  $player->getAge();
+            $data[] = [
+                'ID'=>$player->getId(),
+                'NICK'=>$player->getNick(),
+                'NAME'=>$player->getName(),
+                'FLAG' => $player->getFlag(),
+                'PHOTO' => $player->getPhoto(),
+                'AGE'=> $age,
+                'TEAM' => $player->getTeam() == null ? "No team": [
+                    'ID' => $player->getTeam()->getId(),
+                    'NAME' => $player->getTeam()->getName(),
+                    'LOGO' => $player->getTeam()->getLogo()
+                ]
             ];
         }
         return $this->json($data);
