@@ -30,11 +30,39 @@
         </div>
         <div class="sBar">
             <input id="search" type="text" placeholder="Search.." name="search">
-            <div class="sList">
-                <ng-container *ngFor="let item of players">
-                    <h3>{{ item }}</h3>
-                </ng-container>
-            </div>
+                <div class="sList">
+                    <ng-container *ngIf="players.length!=0 || teams.length!=0; else noResults">
+                        <ng-container *ngIf="players.length!=0">
+                            <div class="PlayerHead">
+                                <h5>Players</h5>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngFor="let item of players">
+                            <a class="newPlayer" href="/player/{{item[2]}}">
+                                <img src="/assets/images/flags/{{ item[1] }}.png" alt="" height="10px">
+                                <h3>{{ item[0] }}</h3>
+                            </a>
+                        </ng-container>
+                        <ng-container *ngIf="teams.length!=0">
+                            <div class="PlayerHead">
+                                <h5>Teams</h5>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngFor="let item of teams">
+                            <a class="newPlayer" href="/team/{{item[2]}}">
+                                <img src="/assets/images/teams/{{ item[1] }}.png" alt="" height="10px">
+                                <h3>{{ item[0] }}</h3>
+                            </a>
+                        </ng-container>
+                    </ng-container>
+                    <ng-template #noResults>
+                        <ng-container *ngIf="!canSearch">
+                            <div class="PlayerHead">
+                                <h5>No Results</h5>
+                            </div>
+                        </ng-container>
+                    </ng-template>
+                </div>
         </div>
     </div>
 </div>

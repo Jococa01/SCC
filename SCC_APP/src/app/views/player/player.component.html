@@ -2,12 +2,12 @@
     <div class="playerPage">
         <ng-container *ngIf='Team!=undefined; else elseblock'>
             <div class="row menu">
-                <a href="/team/{{ TeamID }}"><h3><-- All {{ Team }} Players</h3></a>
+                <a href="/team/{{ TeamID }}"><h3>⬅ All {{ Team }} Players</h3></a>
             </div>
         </ng-container>
         <ng-template #elseblock>
             <div class="row menu">
-                <a href="/free-agents"><h3><-- All Free Agents</h3></a>
+                <a href="/free-agents"><h3>⬅ All Free Agents</h3></a>
             </div>
         </ng-template>
         <div class="playerCont">
@@ -29,7 +29,7 @@
             </div>
             <div class="playerPhoto">
                 <div class="circle">
-                    <img src="/assets/images/players/{{ PlayerPhoto }}.png" alt="" height="375px">
+                    <img src="/assets/images/players/{{ PlayerPhoto }}.png" alt="" style="max-width: 350px; max-height: 375px;">
                 </div>
             </div>
         </div>

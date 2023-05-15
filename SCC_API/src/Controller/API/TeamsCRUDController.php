@@ -60,4 +60,29 @@ class TeamsCRUDController extends AbstractController
 
         return $this->json($data);
     }
+
+    #[Route('/search/{name}', name: 'query', methods:['GET'])]
+    public function query(EntityManagerInterface $entityManager, string $name): JsonResponse
+    {
+        $QB = $entityManager->getRepository(Team::class)->createQueryBuilder('o')
+        ->where('o.name LIKE :name OR o.name LIKE :name')
+        ->setParameter('name', '%'.$name.'%');
+
+        $query = $QB->getQuery();
+
+        $results = $query->execute();
+
+        $data = [];
+        foreach ($results as $team) {
+            $data[] = [
+                'ID'=>$team->getId(),
+                'RANKING'=>$team->getRanking(),
+                'NAME'=>$team->getName(),
+                'LOGO'=>$team->getLogo(),
+                'FLAG' => $team->getFlag()
+            ];
+        }
+        return $this->json($data);
+    }
+
 }

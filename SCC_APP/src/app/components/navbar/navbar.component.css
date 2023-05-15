@@ -18,10 +18,12 @@ nav{
     position: absolute;
     width: 300px;
     height: max-content;
-    top: 70%;
+    top: 74%;
     /* left: 76%; */
-    background-color: #222831;
-    border: .15em solid #FFD369;
+    background-color: #393E46;
+    border-left: 1px solid #FFD369;
+    border-right: 1px solid #FFD369;
+    /* border-bottom: 1px solid #FFD369; */
     display: none;
 }
 #search{
@@ -32,11 +34,56 @@ nav{
     width: 300px;
 }
 #search:focus{
-    border: #FFD369 .15em solid;
+    border: #FFD369 1px solid;
     background-color: #EEE;
     outline: none;
 }
 
 #search:focus + .sList{
     display: block;
+}
+.sList:hover{
+    display: block;
+}
+
+.PlayerHead{
+    background-color: #222831; 
+    display: flex; 
+    align-content: center; 
+    justify-content: start; 
+    padding: .5em;
+    border-bottom: 1px solid #FFD369;
+}
+.PlayerHead h5{
+    font-family: covesBold;
+    font-weight: 500;
+    font-size: 16px;
+    color: #AAA;
+    margin: 0;
+    padding: 0;
+}
+
+.newPlayer{
+    background-color: #393E46; 
+    display: flex; 
+    align-items: center; 
+    justify-content: start; 
+    padding: .5em;
+    border-bottom: 1px solid #FFD369;
+    height: 2em;
+}
+
+.newPlayer h3{
+    font-family: covesBold;
+    font-weight: 500;
+    font-size: 18px;
+    color: #EEE;
+    margin: 0;
+    padding: 0;
+}
+
+.newPlayer img{
+    height: 100%;
+    margin: 0;
+    padding-right: 0.5em;
 }

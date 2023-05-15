@@ -34,4 +34,8 @@ export class DataService {
     return this.http.get<Player>(this.urlPlayers+"/search/"+nick);
   }
 
+  queryTeams(name:string):Observable<Team>{
+    return this.http.get<Team>(this.urlTeams+"/search/"+name);
+  }
+
 }
