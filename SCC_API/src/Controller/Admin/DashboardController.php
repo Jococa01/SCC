@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Player;
+use App\Entity\Role;
 use App\Entity\Team;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -47,6 +48,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
         yield MenuItem::linkToCrud('Teams','fa fa-people-group',Team::class);
         yield MenuItem::linkToCrud('Players','fa fa-user',Player::class);
+        yield MenuItem::linkToCrud('Role','fa fa-chess',Role::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 

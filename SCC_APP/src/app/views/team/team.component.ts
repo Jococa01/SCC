@@ -15,6 +15,7 @@ export class TeamComponent {
   public TeamName: string = "";
   public TeamLogo: string = "";
   public TeamFlag: string = "";
+  public TeamRanking: string = ""
 
   constructor(public service: DataService,private activatedRoute: ActivatedRoute, private titleService:Title) {}
 
@@ -23,6 +24,8 @@ export class TeamComponent {
   }
 
   public responseToArray(response:any){
+    let loader = document.getElementsByClassName('loader')[0];
+    loader.classList.add('hidden');
     let nPlayers = 5;
     let newArray = [];
     console.log(response);
@@ -30,17 +33,19 @@ export class TeamComponent {
     this.titleService.setTitle(this.TeamName+"'s team page | Spanish CSGO Community");
     this.TeamLogo = response[0].LOGO;
     this.TeamFlag = response[0].FLAG;
+    this.TeamRanking = response[0].RANKING;
     console.log(this.TeamLogo);
     if(response[0].PLAYERS != "none"){
       for(let i = 0; i<response[0].PLAYERS.length; i++){
-        newArray[i] = [response[0].PLAYERS[i].ID,response[0].PLAYERS[i].NICK,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO];
+        newArray[i] = [response[0].PLAYERS[i].ID,response[0].PLAYERS[i].NICK,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO,response[0].PLAYERS[i].ROLE];
         if(response[0].PLAYERS[i].NICK.length>12){
           let name = response[0].PLAYERS[i].NICK;
           let shortname = name.slice(0,9);
           shortname = shortname+"...";
-          newArray[i] = [response[0].PLAYERS[i].ID,shortname,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO];
+          newArray[i] = [response[0].PLAYERS[i].ID,shortname,response[0].PLAYERS[i].NAME,response[0].PLAYERS[i].FLAG,response[0].PLAYERS[i].PHOTO,response[0].PLAYERS[i].ROLE];
         }
       }
+      
       if(newArray.length<nPlayers){
         for(let i = newArray.length; i<nPlayers; i++){
           newArray.push(["","?","","","default"]);

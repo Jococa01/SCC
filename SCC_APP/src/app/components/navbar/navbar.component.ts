@@ -12,6 +12,7 @@ export class NavbarComponent {
   public canSearch: boolean = true;
   public players:any = [];
   public teams:any = [];
+  // public typying: boolean = false;
   // public TeamID: string ="";
 
   constructor(public service: DataService) {}
@@ -45,6 +46,8 @@ export class NavbarComponent {
 
   public responseToArray2(response:any){
     // this.canSearch=true;
+    // console.log("obtengo respuesta");
+    
     this.teams = [];
     for(let n = 0; n<response.length; n++){
       console.log(response);
@@ -67,8 +70,12 @@ export class NavbarComponent {
     let sb = <HTMLInputElement>document.getElementById('search')!;
     sb.addEventListener('input',(e)=>{
       // console.log(sb.value);
+      console.log("debug value: "+sb.value.length);
+      console.log("can search: "+this.canSearch);
+      
       if(sb.value.length>1 && this.canSearch==true){
-        this.canSearch = false;
+        console.log("hago búsqueda");
+        // this.canSearch = false;
         this.getPlayer(sb.value);
         this.getTeam(sb.value);
       }else{

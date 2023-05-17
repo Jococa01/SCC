@@ -4,6 +4,7 @@ export interface Teams {
     LOGO: null;
     FLAG: string;
     ID: number;
+    DIFF: number;
 }
 
 export interface Team {
@@ -13,6 +14,7 @@ export interface Team {
     LOGO: string;
     FLAG: string;
     PLAYERS: Player[];
+    DIFF: number;
 }
 
 export interface BasicTeam {
@@ -27,4 +29,5 @@ export interface Player {
     FLAG: string;
     PHOTO: string;
     TEAM:  BasicTeam;
+    AGE: number;
 }

@@ -52,8 +52,11 @@
     border-radius: .5em;
 }
 
-.top .items{
-
+.items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .podium h1{

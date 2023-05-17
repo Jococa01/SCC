@@ -3,7 +3,9 @@
 namespace App\Controller\API;
 
 use App\Entity\Player;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\Expr\Math;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,12 +20,25 @@ class PlayersCRUDController extends AbstractController
         $results = $entityManager->getRepository(Player::class)->findAll();
         $data = [];
         foreach ($results as $player) {
+
+            if($player->getAge()!=null){
+                $currentDate = date("Y-m-d");
+                $toString = $player->getAge()->format("Y-m-d");
+                $diff = date_diff(date_create($toString), date_create($currentDate));
+                $age = $diff->format('%y');
+            }else{
+                $age = "";
+            }
+
             $data[] = [
                 'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
+                'TEAM' => $player->getTeam()->getName(),
+                'ROLE' => $player->getRole()->getName(),
                 'FLAG' => $player->getFlag(),
-                'PHOTO' => $player->getPhoto()
+                'PHOTO' => $player->getPhoto(),
+                'AGE'=> $age
             ];
         }
         return $this->json($data);
@@ -35,19 +50,27 @@ class PlayersCRUDController extends AbstractController
         $results = $entityManager->getRepository(Player::class)->findBy(['id'=>$id]);
         $data = [];
         foreach ($results as $player) {
-            $age = $player->getAge() == null ? "":  $player->getAge();
+            if($player->getAge()!=null){
+                $currentDate = date("Y-m-d");
+                $toString = $player->getAge()->format("Y-m-d");
+                $diff = date_diff(date_create($toString), date_create($currentDate));
+                $age = $diff->format('%y');
+            }else{
+                $age = "";
+            }
             $data[] = [
                 'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
-                'FLAG' => $player->getFlag(),
-                'PHOTO' => $player->getPhoto(),
-                'AGE'=> $age,
                 'TEAM' => $player->getTeam() == null ? "No team": [
                     'ID' => $player->getTeam()->getId(),
                     'NAME' => $player->getTeam()->getName(),
                     'LOGO' => $player->getTeam()->getLogo()
-                ]
+                ],
+                'ROLE' => $player->getRole()->getName(),
+                'FLAG' => $player->getFlag(),
+                'PHOTO' => $player->getPhoto(),
+                'AGE'=> $age
             ];
         }
         return $this->json($data);
@@ -59,12 +82,24 @@ class PlayersCRUDController extends AbstractController
         $results = $entityManager->getRepository(Player::class)->findBy(['team'=>null]);
         $data = [];
         foreach ($results as $player) {
+
+            if($player->getAge()!=null){
+                $currentDate = date("Y-m-d");
+                $toString = $player->getAge()->format("Y-m-d");
+                $diff = date_diff(date_create($toString), date_create($currentDate));
+                $age = $diff->format('%y');
+            }else{
+                $age = "";
+            }
+
             $data[] = [
                 'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
+                'ROLE' => $player->getRole()->getName(),
                 'FLAG' => $player->getFlag(),
-                'PHOTO' => $player->getPhoto()
+                'PHOTO' => $player->getPhoto(),
+                'AGE'=> $age
             ];
         }
         return $this->json($data);
@@ -83,7 +118,16 @@ class PlayersCRUDController extends AbstractController
 
         $data = [];
         foreach ($results as $player) {
-            $age = $player->getAge() == null ? "":  $player->getAge();
+
+            if($player->getAge()!=null){
+                $currentDate = date("Y-m-d");
+                $toString = $player->getAge()->format("Y-m-d");
+                $diff = date_diff(date_create($toString), date_create($currentDate));
+                $age = $diff->format('%y');
+            }else{
+                $age = "";
+            }
+
             $data[] = [
                 'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),

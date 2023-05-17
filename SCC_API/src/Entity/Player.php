@@ -35,6 +35,9 @@ class Player
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $age = null;
 
+    #[ORM\ManyToOne(inversedBy: 'players')]
+    private ?Role $Role = null;
+
     public function __toString()
     {
         return $this->getNick();
@@ -132,6 +135,18 @@ class Player
     public function setAge(?\DateTimeInterface $age): self
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->Role;
+    }
+
+    public function setRole(?Role $Role): self
+    {
+        $this->Role = $Role;
 
         return $this;
     }

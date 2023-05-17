@@ -30,6 +30,9 @@ class Team
     #[ORM\OneToMany(mappedBy: 'team', targetEntity: Player::class)]
     private Collection $players;
 
+    #[ORM\Column]
+    private ?int $Diff = null;
+
     public function __construct()
     {
         $this->players = new ArrayCollection();
@@ -125,6 +128,18 @@ class Team
                 $player->setTeam(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDiff(): ?int
+    {
+        return $this->Diff;
+    }
+
+    public function setDiff(int $Diff): self
+    {
+        $this->Diff = $Diff;
 
         return $this;
     }

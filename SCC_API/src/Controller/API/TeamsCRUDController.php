@@ -24,6 +24,7 @@ class TeamsCRUDController extends AbstractController
                 'LOGO'=>$team->getLogo(),
                 'FLAG' => $team->getFlag(),
                 'ID'=>$team->getId(),
+                'DIFF'=>$team->getDiff()
             ];
         }
         return $this->json($data);
@@ -42,6 +43,7 @@ class TeamsCRUDController extends AbstractController
                 'ID'=>$player->getId(),
                 'NICK'=>$player->getNick(),
                 'NAME'=>$player->getName(),
+                'ROLE' => $player->getRole()->getName(),
                 'FLAG' => $player->getFlag(),
                 'PHOTO' => $player->getPhoto()
             ];
@@ -54,6 +56,7 @@ class TeamsCRUDController extends AbstractController
                 'NAME'=>$team->getName(),
                 'LOGO'=>$team->getLogo(),
                 'FLAG' => $team->getFlag(),
+                'DIFF'=>$team->getDiff(),
                 'PLAYERS'=> $playersArray?:'none'
             ];
         }
@@ -79,7 +82,8 @@ class TeamsCRUDController extends AbstractController
                 'RANKING'=>$team->getRanking(),
                 'NAME'=>$team->getName(),
                 'LOGO'=>$team->getLogo(),
-                'FLAG' => $team->getFlag()
+                'FLAG' => $team->getFlag(),
+                'DIFF'=>$team->getDiff()
             ];
         }
         return $this->json($data);

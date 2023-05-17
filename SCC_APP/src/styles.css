@@ -26,6 +26,8 @@ span.paleta {
     color: #393E46;
     color: #FFD369;
     color: #EEEEEE;
+    color: #70AE6E;
+    color: #F24236;
 }
 
 /*  */
@@ -172,4 +174,31 @@ h4{
 .rankingTable tbody tr:hover{
     background-color: #393E46;
     cursor: pointer;
+}
+
+/* Loader */
+.loader{
+    top: 0;
+    position: absolute;
+    z-index: 10;
+    width: 99vw;
+    height: 100vh;
+    background-color: #222831;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .3s, opacity .3s linear;
+}
+
+.up{
+    color: #70AE6E;
+}
+
+.down{
+    color: #F24236;
 }

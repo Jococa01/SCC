@@ -14,8 +14,8 @@ export class DataService {
   public urlTeams: string = '/api/teams';
   public urlPlayers: string = '/api/player';
 
-  getTeams():Observable<Teams>{
-    return this.http.get<Teams>(this.urlTeams);
+  getTeams():Observable<Team[]>{
+    return this.http.get<Team[]>(this.urlTeams);
   }
 
   getTeamPlayers(id:string):Observable<Team>{

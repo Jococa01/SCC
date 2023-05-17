@@ -1,9 +1,10 @@
 <div class="TableCont">
-    <table class="teamTable" style="color: aliceblue;">
+    <table class="teamTable" style="color: aliceblue; border-spacing: 10px;">
         <thead>
             <tr>
                 <th colspan="5" style="text-align: center;">
                     <div>
+                        <h4>#{{ TeamRanking }}</h4>
                         <img src="/assets/images/teams/{{ TeamLogo }}.png" alt="" height="60px">
                         <h4>{{TeamName}}</h4>
                         <img src="/assets/images/flags/{{ TeamFlag }}.png" alt="" height="60px">
@@ -24,7 +25,7 @@
                         <ng-container *ngIf="player[1]!='?';else elseblock">
                             <div class="playerInfo">
                                 <h2><a href="player/{{player[0]}}">{{player[1]}}</a></h2>
-                                <h3>Rifler</h3>
+                                <h3>{{player[5]}}</h3>
                             </div>
                         </ng-container>
                         <ng-template #elseblock>
@@ -38,4 +39,8 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="loader">
+    <img src="https://i.stack.imgur.com/kOnzy.gif" alt="" height="75px">
 </div>

@@ -27,7 +27,11 @@ export class FaComponent {
     let loader = document.getElementsByClassName('loader')[0];
     loader.classList.add('hidden');
     for(let i = 0; i<response.length; i++){
-      newArray[i] = [response[i].NICK, response[i].PHOTO, response[i].NAME, response[i].FLAG, response[i].ID];
+      let edad = response[i].AGE;
+      if(edad==""){
+        edad = "-";
+      }
+      newArray[i] = [response[i].NICK, response[i].PHOTO, response[i].NAME, response[i].FLAG, response[i].ID, response[i].ROLE, edad];
       // if(newArray[i][0] == null ){
       //   nullcount++;
       // }

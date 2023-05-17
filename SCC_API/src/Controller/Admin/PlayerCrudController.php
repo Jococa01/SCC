@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Team;
 use App\Entity\Player;
+use App\Entity\Role;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -19,10 +20,11 @@ class PlayerCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield Field::new('id')->hideOnForm();
-        yield AssociationField::new('team')->setFormTypeOptions(['by_reference' => true,]);
-        // yield ArrayField::new('team')->hideOnForm();
         yield Field::new('nick');
         yield Field::new('name');
+        yield AssociationField::new('team')->setFormTypeOptions(['by_reference' => true, "required"=>false]);
+        yield AssociationField::new('Role')->setFormTypeOptions(['by_reference' => true]);
+        // yield ArrayField::new('team')->hideOnForm();
         yield Field::new('flag');
         yield Field::new('photo');
         yield Field::new('age');

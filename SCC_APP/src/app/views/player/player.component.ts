@@ -17,6 +17,7 @@ export class PlayerComponent {
   public FullName: string = "";
   public PlayerPhoto: string = "";
   public PlayerFlag: string = "";
+  public PlayerRole: string = "";
   public Age: string = "no data";
   public Team: string = "";
   public TeamID: string = "";
@@ -28,7 +29,9 @@ export class PlayerComponent {
   }
 
   public responseToArray(response:any){
-
+    
+    let loader = document.getElementsByClassName('loader')[0];
+    loader.classList.add('hidden');
     // console.log(response[0].NAME);
     this.titleService.setTitle(response[0].NICK+"'s Player Profile | Spanish CSGO Community");
 
@@ -36,16 +39,18 @@ export class PlayerComponent {
     this.TeamID = response[0].TEAM.ID;
     this.PlayerPhoto = response[0].PHOTO;
     this.PlayerFlag = response[0].FLAG;
+    this.PlayerRole = response[0].ROLE;
+    // this.Age = response[0].AGE;
     
 
     // if(this.Team==undefined){this.Team = "F/A";}
     
 
-    if(response[0].AGE.date!=null){
-      this.Age = this.calcYear(response[0].AGE.date).toString();
+    if(response[0].AGE!=""){
+      this.Age = response[0].AGE;
     }
 
-    console.log(this.Age);
+    // console.log(this.Age);
     
 
     let NSN = response[0].NAME.split(" ");
@@ -77,12 +82,12 @@ export class PlayerComponent {
     this.getPlayer(this.PlayerID);
   }
 
-  public calcYear(dateSent:any){
-    let currentDate = new Date().getTime();
-    let pastTime = Date.parse(dateSent);
-    let difference = Math.abs(currentDate - pastTime);
-    let yearDiff =  Math.floor(difference / (1000 * 60 * 60 * 24) / 365);
-    return yearDiff;
-}
+  // public calcYear(dateSent:any){
+  //     let currentDate = new Date().getTime();
+  //     let pastTime = Date.parse(dateSent);
+  //     let difference = Math.abs(currentDate - pastTime);
+  //     let yearDiff =  Math.floor(difference / (1000 * 60 * 60 * 24) / 365);
+  //     return yearDiff;
+  // }
 
 }

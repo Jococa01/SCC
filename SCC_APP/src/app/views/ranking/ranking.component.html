@@ -9,6 +9,17 @@
                                 <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
                                 <h1>{{ team[1] }}</h1>
                                 <h1>#{{ team[0] }}</h1>
+                                <!-- <ng-container *ngIf="team[6]!=0;else comparatetop">
+                                    <ng-container *ngIf="team[6] > 0;else negativotop">
+                                        <h3 class="up">{{team[5]}}</h3>
+                                    </ng-container>
+                                    <ng-template #negativotop>
+                                        <h3 class="down">{{team[5]}}</h3>
+                                    </ng-template>
+                                </ng-container>
+                                <ng-template #comparatetop>
+                                    <h3>-</h3>
+                                </ng-template> -->
                             </div>
                         </div>
                     </ng-container>
@@ -18,6 +29,7 @@
                                 <img src="/assets/images/teams/{{team[2]}}.png" alt="" height="100px">
                                 <h1>{{ team[1] }}</h1>
                                 <h1>#{{ team[0] }}</h1>
+                                <h2>-</h2>
                             </div>
                         </div>
                     </ng-template>
@@ -44,7 +56,17 @@
                             <td>
                                 <h3>{{team[1]}}</h3>
                             </td>
-                            <td>-</td>
+                            <ng-container *ngIf="team[6]!=0;else comparate">
+                                <ng-container *ngIf="team[6]>0;else negativo">
+                                    <td class="up">{{team[5]}}</td>
+                                </ng-container>
+                                <ng-template #negativo>
+                                    <td class="down">{{team[5]}}</td>
+                                </ng-template>
+                            </ng-container>
+                            <ng-template #comparate>
+                                <td>-</td>
+                            </ng-template>
                         </tr>
                     </ng-container>
                     <ng-template #elserow>
@@ -61,4 +83,8 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<div class="loader">
+    <img src="https://i.stack.imgur.com/kOnzy.gif" alt="" height="75px">
 </div>
