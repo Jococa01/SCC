@@ -12,6 +12,10 @@ export class NavbarComponent {
   public canSearch: boolean = true;
   public players:any = [];
   public teams:any = [];
+
+  public typingTimer:any;                //timer identifier
+  public doneTypingInterval:number = 100;  //time in ms, 5 seconds for example
+
   // public typying: boolean = false;
   // public TeamID: string ="";
 
@@ -67,29 +71,24 @@ export class NavbarComponent {
   }
 
   ngOnInit() {
-    let sb = <HTMLInputElement>document.getElementById('search')!;
-    sb.addEventListener('input',(e)=>{
-      // console.log(sb.value);
-      console.log("debug value: "+sb.value.length);
-      console.log("can search: "+this.canSearch);
-      
-      if(sb.value.length>1 && this.canSearch==true){
-        console.log("hago búsqueda");
-        // this.canSearch = false;
-        this.getPlayer(sb.value);
-        this.getTeam(sb.value);
-      }else{
-        this.players = [];
-        this.teams = [];
-        this.canSearch = true;
-      }
-    });
-    // this.TeamID = this.activatedRoute.snapshot.params['id'];
-    // this.getPlayer(this.TeamID);
+
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log(changes);
-  // }
+  //on keyup, start the countdown
+  public keyup(event:Event) {
+    const myInput = event.target as HTMLInputElement;
+    clearTimeout(this.typingTimer);
+    if (myInput.value.length>1 && this.canSearch) {
+      this.typingTimer = setTimeout(()=>{
+          console.log("hago búsqueda");
+          // this.canSearch = false;
+          this.getPlayer(myInput.value);
+          this.getTeam(myInput.value);
+      }, this.doneTypingInterval);
+    } else{
+      this.players = [];
+      this.teams = [];
+    }
+  }
 
 }

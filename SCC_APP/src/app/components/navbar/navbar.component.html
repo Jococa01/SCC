@@ -29,7 +29,7 @@
             </ul>
         </div>
         <div class="sBar">
-            <input id="search" type="text" placeholder="Search.." name="search">
+            <input id="search" type="text" placeholder="Search.." name="search" (keyup)="keyup($event)">
                 <div class="sList">
                     <ng-container *ngIf="players.length!=0 || teams.length!=0; else noResults">
                         <ng-container *ngIf="players.length!=0">
