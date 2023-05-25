@@ -54,3 +54,19 @@
 .desc{
     margin-bottom: 0;
 }
+
+#faceit{
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    background-color: #20252e ; 
+    width: 100%;
+}
+#faceit * {
+    padding: 0;
+    margin: 0;
+}
+
+#faceit *:not(:last-child){
+    margin-right: 1em;
+}

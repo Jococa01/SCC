@@ -21,6 +21,11 @@ export class PlayerComponent {
   public Age: string = "no data";
   public Team: string = "";
   public TeamID: string = "";
+  // Faceit
+  public FaceitLvl: string = "No data";
+  public FaceitElo: string = "No data";
+  public FaceitKD: string = "No data";
+  public FaceitHS: string = "No data";
 
   constructor(public service: DataService,private activatedRoute: ActivatedRoute, private titleService:Title) {}
 
@@ -28,10 +33,18 @@ export class PlayerComponent {
     this.service.getPlayer(id).subscribe((response) => {this.responseToArray(response)});
   }
 
+  public getFaceitPlayer(nick:string): void {
+    this.service.getFaceitPlayer(nick).subscribe((response) => {this.responseToArray2(response)});
+  }
+
+  public getFaceitPlayerStats(id:string): void {
+    this.service.getFaceitPlayerStats(id).subscribe((response) => {this.responseToArray3(response)});
+  }
+
   public responseToArray(response:any){
     
-    let loader = document.getElementsByClassName('loader')[0];
-    loader.classList.add('hidden');
+    // let loader = document.getElementsByClassName('loader')[0];
+    // loader.classList.add('hidden');
     // console.log(response[0].NAME);
     this.titleService.setTitle(response[0].NICK+"'s Player Profile | Spanish CSGO Community");
 
@@ -74,6 +87,23 @@ export class PlayerComponent {
     // this.TeamFlag = response[0].FLAG;
     // console.log(this.TeamLogo);
     
+    this.getFaceitPlayer(response[0].NICK);
+  }
+
+  public responseToArray2(response:any){    
+    let csgoData = response.games["csgo"];
+    this.FaceitLvl = csgoData.skill_level;
+    this.FaceitElo = csgoData.faceit_elo;
+
+    this.getFaceitPlayerStats(response.player_id);
+
+  }
+
+  public responseToArray3(response:any){
+    this.FaceitKD = response.lifetime["Average K/D Ratio"];
+    this.FaceitHS = response.lifetime["Average Headshots %"];
+    let loader = document.getElementsByClassName('loader')[0];
+    loader.classList.add('hidden');
   }
 
 
