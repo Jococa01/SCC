@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError  } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { FaceitPlayer, Team, Player } from '../models/response';
 
 
@@ -50,11 +51,15 @@ export class DataService {
   }
 
   getFaceitPlayer(nick:string):Observable<any>{
-    return this.http.get<any>(this.faceitPlayer+"?nickname="+nick,this.httpOptions);
+    return this.http.get<any>(this.faceitPlayer+"?nickname="+nick,this.httpOptions).pipe(catchError(this.erroHandler));
   }
 
   getFaceitPlayerStats(id:string):Observable<any>{
     return this.http.get<any>(this.faceitPlayer+"/"+id+"/stats/csgo",this.httpOptions);
+  }
+
+  erroHandler(error: HttpErrorResponse) {
+    return throwError(error.message || 'server Error');
   }
 
 }

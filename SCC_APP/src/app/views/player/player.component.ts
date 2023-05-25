@@ -26,6 +26,8 @@ export class PlayerComponent {
   public FaceitElo: string = "No data";
   public FaceitKD: string = "No data";
   public FaceitHS: string = "No data";
+  // Error Handling
+  public error: boolean = false;
 
   constructor(public service: DataService,private activatedRoute: ActivatedRoute, private titleService:Title) {}
 
@@ -34,7 +36,14 @@ export class PlayerComponent {
   }
 
   public getFaceitPlayer(nick:string): void {
-    this.service.getFaceitPlayer(nick).subscribe((response) => {this.responseToArray2(response)});
+    if(this.error == false){
+        this.service.getFaceitPlayer(nick).subscribe((response) => {this.responseToArray2(response)},
+      error => {
+        let loader = document.getElementsByClassName('loader')[0];
+        loader.classList.add('hidden');
+        this.error = true;
+      });
+    }
   }
 
   public getFaceitPlayerStats(id:string): void {
@@ -90,7 +99,9 @@ export class PlayerComponent {
     this.getFaceitPlayer(response[0].NICK);
   }
 
-  public responseToArray2(response:any){    
+  public responseToArray2(response:any){
+    console.log(response);
+        
     let csgoData = response.games["csgo"];
     this.FaceitLvl = csgoData.skill_level;
     this.FaceitElo = csgoData.faceit_elo;
@@ -101,7 +112,7 @@ export class PlayerComponent {
 
   public responseToArray3(response:any){
     this.FaceitKD = response.lifetime["Average K/D Ratio"];
-    this.FaceitHS = response.lifetime["Average Headshots %"];
+    this.FaceitHS = response.lifetime["Average Headshots %"]+"%";
     let loader = document.getElementsByClassName('loader')[0];
     loader.classList.add('hidden');
   }
